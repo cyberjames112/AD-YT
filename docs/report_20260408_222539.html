@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCPS 週報 — 2026年04月08日</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg:#f7f8fc; --white:#fff; --blue:#2563eb; --blue-l:#dbeafe; --blue-d:#1d4ed8;
+  --green:#059669; --green-l:#d1fae5; --orange:#d97706; --orange-l:#fef3c7;
+  --red:#dc2626; --red-l:#fee2e2;
+  --txt:#1e293b; --txt2:#64748b; --txt3:#94a3b8;
+  --bdr:#e2e8f0; --bdr2:#f1f5f9;
+  --r:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* HEADER */
+.hdr{background:var(--white);border-bottom:1px solid var(--bdr);padding:32px 40px 28px}
+.hdr-in{max-width:960px;margin:0 auto}
+.hdr-label{display:inline-block;background:var(--blue-l);color:var(--blue);padding:4px 12px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:12px}
+.hdr h1{font-size:24px;font-weight:700;margin-bottom:4px}
+.hdr-date{font-size:14px;color:var(--txt2)}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:960px;margin:20px auto;padding:0 40px}
+.st{background:var(--white);border:1px solid var(--bdr);border-radius:var(--r);padding:18px;text-align:center}
+.st-v{font-size:30px;font-weight:700;line-height:1.2}
+.st-v.blue{color:var(--blue)} .st-v.green{color:var(--green)} .st-v.red{color:var(--red)}
+.st-l{font-size:12px;color:var(--txt2);margin-top:2px}
+
+/* TABS */
+.tabs{max-width:960px;margin:24px auto 0;padding:0 40px;display:flex;gap:0;border-bottom:2px solid var(--bdr)}
+.tab{padding:10px 24px;font-size:14px;font-weight:600;color:var(--txt3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s;user-select:none}
+.tab:hover{color:var(--txt2)}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-content{display:none}.tab-content.active{display:block}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:0 40px 60px}
+.section{margin-top:28px}
+.sec-title{font-size:16px;font-weight:600;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--bdr2)}
+
+/* STATS TABLE */
+.stats-tbl{width:100%;border-collapse:collapse;background:var(--white);border-radius:var(--r);overflow:hidden;border:1px solid var(--bdr)}
+.stats-tbl tr{border-bottom:1px solid var(--bdr2)}.stats-tbl tr:last-child{border:0}
+.stats-tbl td{padding:10px 16px}
+.q-name{font-size:14px;width:40%}
+.bar-wrap{display:flex;align-items:center;gap:8px}
+.bar{height:8px;background:linear-gradient(90deg,#60a5fa,var(--blue));border-radius:4px;min-width:4px}
+.bar-red{background:linear-gradient(90deg,#fca5a5,var(--red))}
+.bar-num{font-size:14px;font-weight:600;min-width:24px}
+
+/* CARDS */
+.card{background:var(--white);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:14px;overflow:hidden;transition:box-shadow .2s}
+.card:hover{box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.card-head{padding:18px 22px 14px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--bdr2)}
+.card-title{font-size:16px;font-weight:600;margin-bottom:4px}
+.card-sub{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{background:var(--blue-l);color:var(--blue);padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.muted{font-size:12px;color:var(--txt3)}
+.card-actions{display:flex;gap:6px;flex-shrink:0}
+.btn{display:inline-block;padding:5px 12px;border-radius:7px;font-size:12px;font-weight:500;text-decoration:none;transition:all .15s}
+.btn-blue{background:var(--blue-l);color:var(--blue)}.btn-blue:hover{background:var(--blue);color:#fff}
+.btn-green{background:var(--green-l);color:var(--green)}.btn-green:hover{background:var(--green);color:#fff}
+.card-body{padding:4px 22px 16px}
+.ad-row{padding:12px 0;border-bottom:1px solid var(--bdr2)}.ad-row:last-child{border:0}
+.ad-body{font-size:14px;color:var(--txt2);margin-bottom:6px}
+.ad-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.meta{font-size:12px;color:var(--txt3)}
+.chip{display:inline-block;font-size:12px;font-weight:600;text-decoration:none;padding:2px 10px;border-radius:5px;transition:all .15s}
+.chip-blue{background:var(--blue-l);color:var(--blue)}.chip-blue:hover{background:var(--blue);color:#fff}
+.chip-orange{background:var(--orange-l);color:var(--orange)}
+.more{text-align:center;color:var(--txt3);font-size:13px;padding:10px 0 2px}
+
+/* YOUTUBE CARDS */
+.yt-grid{display:flex;flex-direction:column;gap:14px}
+.yt-card{display:flex;gap:16px;background:var(--white);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
+.yt-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.yt-thumb{position:relative;flex-shrink:0;width:240px;height:135px;overflow:hidden;display:block}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.yt-dur{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.8);color:#fff;font-size:11px;font-weight:600;padding:2px 6px;border-radius:4px}
+.yt-info{padding:14px 16px 14px 0;flex:1;min-width:0}
+.yt-title{display:block;font-size:15px;font-weight:600;color:var(--txt);text-decoration:none;margin-bottom:4px;line-height:1.4}
+.yt-title:hover{color:var(--blue)}
+.yt-channel{display:inline-block;font-size:13px;color:var(--red);text-decoration:none;margin-bottom:6px}
+.yt-channel:hover{text-decoration:underline}
+.yt-desc{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.yt-meta{display:flex;gap:14px;font-size:12px;color:var(--txt3)}
+
+/* EMPTY */
+.empty{text-align:center;padding:50px 40px;background:var(--white);border:1px solid var(--bdr);border-radius:var(--r)}
+.empty-icon{font-size:36px;margin-bottom:10px}
+.empty h3{font-size:17px;margin-bottom:6px}
+.empty p{color:var(--txt2);font-size:14px}
+
+/* FOOTER */
+.ftr{max-width:960px;margin:0 auto;padding:20px 40px;text-align:center;color:var(--txt3);font-size:12px;border-top:1px solid var(--bdr2)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hdr,.stats-row,.tabs,.main{padding-left:20px;padding-right:20px}
+  .hdr h1{font-size:20px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .yt-card{flex-direction:column}
+  .yt-thumb{width:100%;height:auto;aspect-ratio:16/9}
+  .yt-info{padding:12px 16px 16px}
+  .card-actions{width:100%}.btn{flex:1;text-align:center}
+}
+@media print{body{background:#fff}.card,.yt-card,.st{box-shadow:none;border:1px solid #ddd}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="hdr-label">CCPS 競品情報</div>
+    <h1>吉隆坡置產 · 週報</h1>
+    <div class="hdr-date">2026年04月08日（週三）22:25 掃描</div>
+  </div>
+</header>
+
+<div class="stats-row">
+  <div class="st"><div class="st-v blue">167</div><div class="st-l">FB 廣告</div></div>
+  <div class="st"><div class="st-v green">36</div><div class="st-l">投放粉專</div></div>
+  <div class="st"><div class="st-v red">29</div><div class="st-l">YT 新影片</div></div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('fb')">📢 FB 廣告</div>
+  <div class="tab" onclick="switchTab('yt')">🎬 YouTube 影片</div>
+</div>
+
+<main class="main">
+  <div id="tab-fb" class="tab-content active">
+    <div class="section">
+      <h2 class="sec-title">📊 關鍵字命中數</h2>
+      <table class="stats-tbl">
+        <tr>
+          <td class="q-name">吉隆坡 說明會</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:89%"></div><span class="bar-num">26</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">吉隆坡 置產</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:82%"></div><span class="bar-num">24</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">吉隆坡 建案</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:82%"></div><span class="bar-num">24</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">吉隆坡 投資說明會</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:89%"></div><span class="bar-num">26</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">馬來西亞 說明會</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:96%"></div><span class="bar-num">28</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">馬來西亞 置產</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:79%"></div><span class="bar-num">23</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">馬來西亞 建案</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:82%"></div><span class="bar-num">24</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">大馬 說明會</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:96%"></div><span class="bar-num">28</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">大馬 置產</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:82%"></div><span class="bar-num">24</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">大馬 建案</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:96%"></div><span class="bar-num">28</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">海外置產 說明會</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:89%"></div><span class="bar-num">26</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">第二家園</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:100%"></div><span class="bar-num">29</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">MM2H</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:93%"></div><span class="bar-num">27</span></div></td>
+        </tr></table>
+    </div>
+    <div class="section">
+      <h2 class="sec-title">📋 粉專與廣告明細</h2>
+      
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Platforms</div>
+              <div class="card-sub"><span class="badge">120 則廣告</span> <span class="muted">海外置產 說明會, 第二家園, MM2H, 大馬 建案, 馬來西亞 置產, 吉隆坡 置產, 吉隆坡 說明會, 大馬 置產, 吉隆坡 建案, 大馬 說明會, 馬來西亞 建案, 吉隆坡 投資說明會, 馬來西亞 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Platforms" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 31, 2026</span><a href="https://www.facebook.com/ads/library/?id=3152045651664121" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">2 ads use this creative and text</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 3, 2026</span><a href="https://www.facebook.com/ads/library/?id=1934174597463451" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">2 ads use this creative and text</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 31, 2026</span><a href="https://www.facebook.com/ads/library/?id=1374323401397572" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">2 ads use this creative and text</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 26, 2026</span><a href="https://www.facebook.com/ads/library/?id=26471475602464186" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">2 ads use this creative and text</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 31, 2026</span><a href="https://www.facebook.com/ads/library/?id=2221802558644699" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 7, 2026</span><a href="https://www.facebook.com/ads/library/?id=934520989184415" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 25, 2026</span><a href="https://www.facebook.com/ads/library/?id=2151478565676005" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">This ad has multiple versions</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 26, 2026</span><a href="https://www.facebook.com/ads/library/?id=3586795638135434" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div><div class="more">還有 112 則，請至 Ad Library 查看</div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Ccps家慶佳業</div>
+              <div class="card-sub"><span class="badge">4 則廣告</span> <span class="muted">吉隆坡 置產, 吉隆坡 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/ccpsmy/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Ccps%E5%AE%B6%E6%85%B6%E4%BD%B3%E6%A5%AD" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 這幾年馬來西亞之所以成為海外置產熱門選擇，原因很簡單：夠穩、夠中立、夠務實！ 真正長久的財富，不是追逐短期暴利，而是在穩定中，持續成長！ 相信您也在找這樣的投資標的？ 門檻親民、持有成本低，未來也更好轉手！ 大馬首選關鍵原因5點立「馬」看懂👇👇👇</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 27, 2026</span><a href="https://www.facebook.com/ads/library/?id=2127364068024344" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 大馬首選關鍵原因5點立「馬」看懂👇 🎯同樣預算，買到更完整地段與生活圈 不只是買一間房，而是買進「租得掉、住得順、放得久」投資。 🎯資金更靈活 可評估向當地銀行申請貸款(依個人條件與銀行審核)，資金調度更彈性。</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 27, 2026</span><a href="https://www.facebook.com/ads/library/?id=910858751816096" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 這幾年馬來西亞之所以成為海外置產熱門選擇，原因很簡單：夠穩、夠中立、夠務實！ 真正長久的財富，不是追逐短期暴利，而是在穩定中，持續成長！ 相信您也在找這樣的投資標的？ 門檻親民、持有成本低，未來也更好轉手！ 大馬首選關鍵原因5點立「馬」看懂👇👇👇</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 27, 2026</span><a href="https://www.facebook.com/ads/library/?id=1286658740076554" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 大馬首選關鍵原因5點立「馬」看懂👇 🎯同樣預算，買到更完整地段與生活圈 不只是買一間房，而是買進「租得掉、住得順、放得久」投資。 🎯資金更靈活 可評估向當地銀行申請貸款(依個人條件與銀行審核)，資金調度更彈性。</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 27, 2026</span><a href="https://www.facebook.com/ads/library/?id=1471545454384692" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">第二家園 Sec2nd Home</div>
+              <div class="card-sub"><span class="badge">4 則廣告</span> <span class="muted">第二家園</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/sec2ndhome/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E7%AC%AC%E4%BA%8C%E5%AE%B6%E5%9C%92%20Sec2nd%20Home" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 看著新聞起伏，心裡想的總是如何讓家人過得更安穩。 很多人問，為什麼最後選擇在檳城落腳？ 其實答案很簡單：就是一份「安全感」。 在檳城，聽著熟悉的台語、看著中文字， 生活像在台灣一樣自在。這裡不僅是全家人的第二家園，</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 22, 2026</span><a href="https://www.facebook.com/ads/library/?id=905626615633817" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 看著新聞起伏，心裡想的總是如何讓家人過得更安穩。 很多人問，為什麼最後選擇在檳城落腳？ 其實答案很簡單：就是一份「安全感」。 在檳城，聽著熟悉的台語、看著中文字， 生活像在台灣一樣自在。這裡不僅是全家人的第二家園，</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 22, 2026</span><a href="https://www.facebook.com/ads/library/?id=934257192539047" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 移居大馬，你不需要獨自摸索。🤝 如果您也嚮往大馬生活，歡迎按讚加入我們，一起交流、分享經驗！ 去馬來西亞生活/投資，最怕的不是手續繁瑣，而是遇到問題沒人問。 我們建立這個平台，是希望讓每一位對「馬來西亞」感興趣的朋友，都能在這裡找到真實的經驗、避開不必要的坑。 從看房賞屋的心得，到在地生活的點滴，我們深信：「互助，是最好的海外導航。」</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 31, 2026</span><a href="https://www.facebook.com/ads/library/?id=26868562822747695" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown Moving to Malaysia? You don’t have to do it alone. 🤝 If you’re looking forward to a new life in Malaysia, give us a like and join our community to exchange insights and share experiences! When it comes to living or investing in Malaysia, the biggest challenge isn&#x27;t the paperwork—it&#x27;s h</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 31, 2026</span><a href="https://www.facebook.com/ads/library/?id=1407617544385003" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">MyGo國際地產</div>
+              <div class="card-sub"><span class="badge">3 則廣告</span> <span class="muted">吉隆坡 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/MyGoGroup/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=MyGo%E5%9C%8B%E9%9A%9B%E5%9C%B0%E7%94%A2" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 馬來西亞MM2H第二家園 移居+吉隆坡、新山、 檳城房產說明會 【吉隆坡、新山、 檳城房產十大建案】 490萬台幣起，一次聽個夠！ 立刻報名👉🏻  https://www.mygo.com/pe/event/seq/101082 ❤️購房免收二家台灣代辦費 ❤️第二家園申辦流程介紹</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 26, 2026</span><a href="https://www.facebook.com/ads/library/?id=1442765360917198" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 秒懂國內外台、馬、泰之遺產稅、贈與稅、境外所得稅法: 立刻報名👉 https://reurl.cc/V0VxnQ 富人如何用海外置產、國外帳戶免繳遺產稅、贈與稅快速累積財富？ 運用國內外「基本稅額」與「海外所得」，了解有錢人的致富方式。 說明會中會分享:</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 30, 2026</span><a href="https://www.facebook.com/ads/library/?id=2018388935374115" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 馬來西亞MM2H第二家園 移居+吉隆坡、新山、 檳城房產說明會 【吉隆坡、新山、 檳城房產十大建案】 490萬台幣起，一次聽個夠！ 立刻報名👉🏻  https://www.mygo.com/pe/event/seq/101082 ❤️購房免收二家台灣代辦費 ❤️第二家園申辦流程介紹</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 28, 2026</span><a href="https://www.facebook.com/ads/library/?id=953550163860773" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">亞境置業-Asean Dwell</div>
+              <div class="card-sub"><span class="badge">2 則廣告</span> <span class="muted">吉隆坡 投資說明會, 吉隆坡 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/100069489786102/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E4%BA%9E%E5%A2%83%E7%BD%AE%E6%A5%AD-Asean%20Dwell" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown #說明會名額將滿 全球震盪下的第二配置，讓資產多一條退路，讓未來多一個選擇 📖免費贈送《吉隆坡房產投資分析報告》 馬來西亞稅制友善，可合法節稅，讓資產傳承更有效率與彈性，成為企業主與家長的長期配置選項。 ✨說明會精選重點 *   如何用有限資金卡位一線城市</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=960306043113076" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown #說明會名額將滿 全球震盪下的第二配置，讓資產多一條退路，讓未來多一個選擇 📖免費贈送《吉隆坡房產投資分析報告》 台灣人竟然在吉隆坡買房？ 當外資開始進場、企業進駐、人口往核心城市集中，市場往往才剛進入上升週期的前段。 ✨說明會精選重點</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=1466136475160171" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">優選良屋</div>
+              <div class="card-sub"><span class="badge">2 則廣告</span> <span class="muted">馬來西亞 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61581629360365/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E5%84%AA%E9%81%B8%E8%89%AF%E5%B1%8B" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 【馬來西亞檳城最具代表性的首席海景邸項目】步行即可到達檳城最大的商場 Queensbay Mall。我們誠邀你參加此地標級海景邸項目 Queens Residences 在台北的專屬説明會。日期：4月12日 (週日), 下午1點45分；地點：台北W飯店。此海景公寓住宅的售價僅從台幣800萬起。&lt;&lt; 出席名額有限, 欲預留席位和獲取全部資料, 請點擊下方的 “報名” 按鈕 &gt;&gt; 【馬來西亞檳城地標級海景邸 Queens Residences 的優勢】 ~ 核心地段：位於剛性需求強 及「離塵不離城」的策略位置 ~ 開發商 Ideal Property Group 被譽為</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 20, 2026</span><a href="https://www.facebook.com/ads/library/?id=976872538207574" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 【馬來西亞檳城優質海景公寓】*6個月內售出80%單位*。15%的高回報率。誠邀妳參加海景公寓住宅STARK TOWER在臺北的獨家説明會。日期：4月11日 (週六), 下午1點45分；地點：臺北W飯店。*當天有建商站台。優質住宅售價僅從臺幣746萬起。 &lt;&lt; 座位有限, 欲預留座位和獲取全部詳情, 請點擊下方的 “報名” 按钮  &gt;&gt; 【馬來西亞檳城豪華海景公寓住宅STARK TOWER的優勢】 ~ 黃金地段：座落於檳城著名高需求的The Light Waterfront區域 ~ 距離未來輕軌站僅150米 ~ 壯麗海景</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 19, 2026</span><a href="https://www.facebook.com/ads/library/?id=720164767753220" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Peace Boat Cruise</div>
+              <div class="card-sub"><span class="badge">2 則廣告</span> <span class="muted">大馬 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/peaceboatcruise/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Peace%20Boat%20Cruise" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 【一次航行，盡覽極致風景】 世界那麼大，這次真的出發吧！ 看極光，不再只是遙遠的計劃 一探復活節島的神秘，比照片更讓人著迷 馬丘比丘的壯麗，值得你親自去感受</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=1010333735503100" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 【一次航行，盡覽極致風景】 世界那麼大，這次真的出發吧！ 看極光，不再只是遙遠的計劃 一探復活節島的神秘，比照片更讓人著迷 馬丘比丘的壯麗，值得你親自去感受</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=1375358934610395" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">上禾國際地產有限公司</div>
+              <div class="card-sub"><span class="badge">2 則廣告</span> <span class="muted">海外置產 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61579712198652/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E4%B8%8A%E7%A6%BE%E5%9C%8B%E9%9A%9B%E5%9C%B0%E7%94%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 面對台灣近年持續收緊的信用管制與高昂的房地合一稅，越來越多高資產族群開始思考：如果資金留在台灣的靈活度受限，哪裡才是下一個穩健的資產停泊港？ 這不只是一個避險的問題，更是全球資產重新洗牌的關鍵。 台灣的房價基期已高，加上租金投報率長期被壓縮，讓單一市場的資金配置充滿隱憂。 然而，海外置產的規則與台灣截然不同，如果只看表面投報數字，卻忽略當地的經濟週期、稅務結構與法規差異，極容易陷入決策盲點。 真正的資產防禦，建立在對兩國市場機制的深度理解之上！</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=840585672420915" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div>
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 面對台灣近年持續收緊的信用管制與高昂的房地合一稅，越來越多高資產族群開始思考：如果資金留在台灣的靈活度受限，哪裡才是下一個穩健的資產停泊港？ 這不只是一個避險的問題，更是全球資產重新洗牌的關鍵。 台灣的房價基期已高，加上租金投報率長期被壓縮，讓單一市場的資金配置充滿隱憂。 然而，海外置產的規則與台灣截然不同，如果只看表面投報數字，卻忽略當地的經濟週期、稅務結構與法規差異，極容易陷入決策盲點。 真正的資產防禦，建立在對兩國市場機制的深度理解之上！</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=935490218859855" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Evian Chan Properties</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">吉隆坡 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/evianchanproperties/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Evian%20Chan%20Properties" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown Golden Crown Residence 金悅公寓，坐落於吉隆坡全新金融核心 Tun Razak Exchange（TRX），屬於政府重點打造的國際金融區。周邊匯聚甲級辦公大樓、高端商場 The Exchange TRX、國際企業總部及成熟生活配套，步行即可直達 TRX MRT 交匯站，交通與商業價值兼備。 這裡不僅是未來金融與商務活動的核心地段，更是結合生活品質與長期投資價值的優質資產。 🔥 TRX 核心地段 🔥 價格親民 🔥 步行直達 TRX 雙捷運站 &amp; TRX Exchange Mall</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 2, 2026</span><a href="https://www.facebook.com/ads/library/?id=2489114431523657" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">小鄭帶你看好房</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">吉隆坡 置產</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61582259481268/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E5%B0%8F%E9%84%AD%E5%B8%B6%E4%BD%A0%E7%9C%8B%E5%A5%BD%E6%88%BF" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 🇲🇾 為什麼越來越多台灣人開始關注馬來西亞？ 很多台灣朋友第一次想到來馬來西亞時，都會有很多疑問： ❓ 我不會馬來文怎麼辦？ ❓ 食物吃得習慣嗎？有華人餐嗎？ ❓ 在馬來西亞是不是一定要開車？</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 13, 2026</span><a href="https://www.facebook.com/ads/library/?id=4382030915352446" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">KLCC Residences</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">吉隆坡 置產</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/KLCCResidences.my/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=KLCC%20Residences" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown ✨ 馬來西亞房產 • 高增長潛力熱區 想在海外擁有第二個家？吉隆坡成為外國投資者首選的原因很簡單： 🏙️ KLCC Armani Hallson – 雙子星塔核心地段 🌅 Bukit Bintang Pavilion Square – 黃金商圈增值王 🏦 TRX Golden Crown – 國際金融區，全城最強增值引擎</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 2, 2026</span><a href="https://www.facebook.com/ads/library/?id=2019959775595512" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">KLCC - Investment Specialist</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">吉隆坡 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61554414372592/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=KLCC%20-%20Investment%20Specialist" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 🇲🇾 吉隆坡 • KLCC 精華住宅 𝙁𝙞𝙧𝙨𝙩 𝙀𝙫𝙚𝙧 𝙎𝙠𝙮 𝘽𝙧𝙞𝙙𝙜𝙚 直通 KLCC 永久產權 | 價格 RM9xxk 起https://chatmamba.com/overseainvest https://chatmamba.com/overseainvest ✨ 全套家具配備</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 28, 2026</span><a href="https://www.facebook.com/ads/library/?id=1373722911467995" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Pavillion KLCC Condo</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">吉隆坡 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/100068231236060/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Pavillion%20KLCC%20Condo" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown ✨ 𝗟𝗶𝘃𝗲 𝗶𝗻 𝘁𝗵𝗲 𝗛𝗲𝗮𝗿𝘁 𝗼𝗳 𝗞𝘂𝗮𝗹𝗮 𝗟𝘂𝗺𝗽𝘂𝗿 ✨ 🚆 Just 1 stop to KLCC, connected by covered walkway to Monorail. 🌳 Enjoy panoramic views of Eco Forest Reserve, KL Tower, KLCC &amp; TRX. 💼 Perfect for urban professionals, investors &amp; MM2H buyers — offering an attractive entry price with optional rent</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 7, 2026</span><a href="https://www.facebook.com/ads/library/?id=1619492702694372" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Rehoboth Realty 利河伯地產</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">吉隆坡 投資說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61559368943780/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Rehoboth%20Realty%20%E5%88%A9%E6%B2%B3%E4%BC%AF%E5%9C%B0%E7%94%A2" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 🚀 2026 馬來西亞觀光年正式啟動！搶進千萬觀光紅利的最後機會 👇https://lihi2.me/qAtN3 加入 利河伯地產 官方LINE 索取相關資訊 : @082tjeak 📍 吉隆坡金三角核心 ✨ 100% 國際門戶 ✅位在 有如台北信義區的「酒吧街」，歐美高消費旅客的匯集地段 - 章卡武及免登 ✅鄰近 屬於吉隆坡的「華爾街」TRX 金融中心與 Pavilion 購物盛地。</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 7, 2026</span><a href="https://www.facebook.com/ads/library/?id=1976260026306008" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">臺馬國際地產PropBee</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">吉隆坡 投資說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61577998859390/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E8%87%BA%E9%A6%AC%E5%9C%8B%E9%9A%9B%E5%9C%B0%E7%94%A2PropBee" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 🔥【場次爆滿】大馬建商直擊：Armani Hallson 全球資金加速配置，馬來西亞吉隆坡成為海外資產首選！本次說明會特別聚焦吉隆坡市中心高度矚目、結合「奢華美學」與「高投報潛力」的精選項目 —— Armani Hallson。 位處吉隆坡最具價值的精華地段，以精緻的建築工藝與完善配套，吸引大量國際外派族與高階白領目光。由於報名狀況極其踴躍，目前台北專場僅剩最後限量席位，讓您搶佔第一手資訊！ 本場說明會將帶你直擊： ✔ Armani Hallson 專案解析｜地段優勢、建築設計與未來增值空間。</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 3, 2026</span><a href="https://www.facebook.com/ads/library/?id=1612534996694020" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">晨耀不動產有限公司 / 住商不動產水湳經貿加盟店</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">馬來西亞 置產</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61565285273399/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E6%99%A8%E8%80%80%E4%B8%8D%E5%8B%95%E7%94%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%20/%20%E4%BD%8F%E5%95%86%E4%B8%8D%E5%8B%95%E7%94%A2%E6%B0%B4%E6%B9%B3%E7%B6%93%E8%B2%BF%E5%8A%A0%E7%9B%9F%E5%BA%97" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 🔥 台灣「限貸令」衝擊，資金該往哪裡去？大馬置產為你完美解套！ 國內房市政策緊縮，現在正是放眼海外的最佳時機！🌍 為什麼這兩年，馬來西亞會逐漸成為海外置產的主流？ 因為它不僅有政府政策的強力加持，更是資金避險的絕佳選擇！ 海外置產最怕找不到人？別擔心，我們一直都在台灣！</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=783612334515053" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">貳家國際 MM2Home</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">馬來西亞 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/mm2home.global/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E8%B2%B3%E5%AE%B6%E5%9C%8B%E9%9A%9B%20MM2Home" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 很多人在開始了解馬來西亞房產時 都會先從網路資訊開始 但真正走一趟之後 才會發現 有些細節</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 31, 2026</span><a href="https://www.facebook.com/ads/library/?id=1467867734795497" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">UF Japan日本留學中心</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/iloveufjapan/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=UF%20Japan%E6%97%A5%E6%9C%AC%E7%95%99%E5%AD%B8%E4%B8%AD%E5%BF%83" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 台灣很多美術生其實都不知道 日本的美術大學要怎麼考 其實不是畫得好就可以，而是有技巧的！ 為美術升學而生的✨ #MEROS美羅斯言語學院 ✨ 📚日語能力</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 3, 2026</span><a href="https://www.facebook.com/ads/library/?id=1314830754040070" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">金牌專業全科班 民德校</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/Goldmedal3581010/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E9%87%91%E7%89%8C%E5%B0%88%E6%A5%AD%E5%85%A8%E7%A7%91%E7%8F%AD%20%E6%B0%91%E5%BE%B7%E6%A0%A1" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 您還在為孩子尋找國中補習班嗎？ 金牌民德分校暑期全科先修班6/22(一)開始囉 🎖如何讓孩子提前適應國中？ 🎖如何讓孩子養成正確的學習態度? 🎖如何把握最黃金的暑期階段?</div>
+              <div class="ad-meta"><span class="meta">📅 Jan 23, 2026</span><a href="https://www.facebook.com/ads/library/?id=859878360269796" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">EG Taichung 宜居台中</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 置產</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/egtaichung/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=EG%20Taichung%20%E5%AE%9C%E5%B1%85%E5%8F%B0%E4%B8%AD" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 🌟北屯【純2房新案】 走路3分鐘到綠線捷運 公園第一排 均質質感捷運宅 空拍分享📢 https://egtaichung.com/2026-beitun-l-new01/ 地上9層 地下2層 共1棟 36戶 平面(僅有1個)+倉儲式機械車位(停好車，下車後機械倉儲停車) 純2房 約22~25坪 【預計工程3年，今年10月開工】</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 3, 2026</span><a href="https://www.facebook.com/ads/library/?id=1470110551148187" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">坤悅涵仰 - 太平區新建案</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 置產</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/kunyue.infinity/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E5%9D%A4%E6%82%85%E6%B6%B5%E4%BB%B0%20-%20%E5%A4%AA%E5%B9%B3%E5%8D%80%E6%96%B0%E5%BB%BA%E6%A1%88" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 你心中的太平，是什麼樣子？ 是74快速道上，那道奔向家的指引 還是中興東路上，轉角的咖啡飄香 是東平路＆太平路，聽見的人潮擁擠 是太平早市&amp;旱溪夜市，流轉的人情冷暖</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 4, 2026</span><a href="https://www.facebook.com/ads/library/?id=1667414560944515" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">大溪 先天三司財庫官廟</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/zxb0256d/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E5%A4%A7%E6%BA%AA%20%E5%85%88%E5%A4%A9%E4%B8%89%E5%8F%B8%E8%B2%A1%E5%BA%AB%E5%AE%98%E5%BB%9F" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown #信眾見證 #信眾反饋 #解冤經 #化解冤親債主 #化解因果 #化解冤親債主的廟 #天醫除疾金 #感情和合 #增貴人 #開運 #米糕補運 #開運燈 #文昌智慧升官發財科儀 #補財庫 #補元辰宮地庫錢 #補本命天庫錢 #補財庫 #補財的廟 #七星燈 🌈信眾案例見證分享 今天院長收到信眾回饋的訊息，告知兒子 ✔️8月15日做解冤經 ✔️8 月16日辦天醫除疾金科儀後</div>
+              <div class="ad-meta"><span class="meta">📅 Oct 28, 2025</span><a href="https://www.facebook.com/ads/library/?id=755425940860476" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">墨禾製作 mooh Living 流行設計家具｜軟裝設計事務所</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/moohLiving/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E5%A2%A8%E7%A6%BE%E8%A3%BD%E4%BD%9C%20mooh%20Living%20%E6%B5%81%E8%A1%8C%E8%A8%AD%E8%A8%88%E5%AE%B6%E5%85%B7%EF%BD%9C%E8%BB%9F%E8%A3%9D%E8%A8%AD%E8%A8%88%E4%BA%8B%E5%8B%99%E6%89%80" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 10戶不同設計風格的客廳空間，選擇相同的 「mooh Living 流行設計家具」🌐 https://www.mooh.co/ 由墨禾製作團隊🙂主導經營的 「mooh Living 流行設計家具」 榮幸參與眾多知名室內設計公司實際案件 協助消費者、室內設計師於住宅空間進行軟裝設計</div>
+              <div class="ad-meta"><span class="meta">📅 Jul 18, 2025</span><a href="https://www.facebook.com/ads/library/?id=2214802098955501" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">植福開發-豪運來</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61576100143487/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E6%A4%8D%E7%A6%8F%E9%96%8B%E7%99%BC-%E8%B1%AA%E9%81%8B%E4%BE%86" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 【 馬年「豪運來」，最新 iPhone 17 真的要送你！】 加入粉專，抽最新神機  #豪運來  幫你一次實現！ 現在只要動動手指，完成以下簡單 3 步驟 就有機會把 iPhone 17 直接帶回家👇 ✅ 活動辦法（缺一不可）即日起-5/31：</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 16, 2026</span><a href="https://www.facebook.com/ads/library/?id=1350342453510795" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">春福安安</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/100083534224149/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E6%98%A5%E7%A6%8F%E5%AE%89%E5%AE%89" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 馬到迎福，豐泰國安 春福機構「春福安安」超值2-3房 新春完工，煥然登場 台南房市「穩」座六都 住居台南就是保值抗跌</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 4, 2026</span><a href="https://www.facebook.com/ads/library/?id=929907173001588" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">iTake 智取櫃</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/iTakeCloud/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=iTake%20%E6%99%BA%E5%8F%96%E6%AB%83" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 📬 收信、收包裹還在分開收嗎？ 在 AI 時代，傳統信箱跟得上你的生活嗎？😎 該將信箱升級成「一次收」了！❤️ 【iTake信箱智取櫃】 把信箱＋包裹櫃合而為一的最新 AI 智慧設計👇</div>
+              <div class="ad-meta"><span class="meta">📅 Dec 2, 2025</span><a href="https://www.facebook.com/ads/library/?id=809470072259860" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">王喬甲子園/王喬光華悅</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">大馬 建案</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/TsingDaFourSeasons/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E7%8E%8B%E5%96%AC%E7%94%B2%E5%AD%90%E5%9C%92/%E7%8E%8B%E5%96%AC%E5%85%89%E8%8F%AF%E6%82%85" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 習慣新竹的節奏，離不開市心機能 那就住下來，擁抱城市的豐饒美好 開箱 ＃王喬甲子園 一探嚮往的生活 點擊看更多 &gt;&gt; https://user270825.psee.ly/6rsja3 位處民富國小、市立棒球場第一排</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 31, 2026</span><a href="https://www.facebook.com/ads/library/?id=1872977183399816" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">忠訓地產 WinnerLife</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">海外置產 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/ok.winnerlife/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E5%BF%A0%E8%A8%93%E5%9C%B0%E7%94%A2%20WinnerLife" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 想在海外置產，卻卡在語言不通、沒人代管、擔心受騙？ 當國際局勢動盪，聰明的投資者正轉向最具韌性的市場。大阪，不僅是日本觀光的心臟，更是低波動、高穩定的「資產避風港」。 忠訓地產 X 樂贏家事業，聯手為您掃除所有障礙，讓您人在台灣，就能優雅佈局大阪！ 💡 為什麼現在是佈局大阪的黃金時機？ 1. 匯率紅利：入手成本超有感</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 2, 2026</span><a href="https://www.facebook.com/ads/library/?id=836894418665720" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">曼谷生活投資日記</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">海外置產 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61587236426800/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E6%9B%BC%E8%B0%B7%E7%94%9F%E6%B4%BB%E6%8A%95%E8%B3%87%E6%97%A5%E8%A8%98" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 最近跟客戶聊天，大家最常感嘆的就是錯過了台灣房市的起漲點。 眼看著竹北、青埔或是中南部受惠於重大建設而翻倍的房價，總是懊悔當初沒有早點出手。 現在看到曼谷房市的熱潮，很多人會問小艾：這個時候進場曼谷，會不會又買在高點？ 其實，現在的曼谷正經歷著如同台灣當年捷運路網成形的建設爆發期。不過，海外置產不能單憑台灣經驗盲目進場。 如果沒有看懂當地的軌道建設期程、人口紅利走向與產業聚落，光看建案的華麗外表，很容易買到當地人不買單的重劃區。</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 1, 2026</span><a href="https://www.facebook.com/ads/library/?id=2136972170385254" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Ray White Hong Kong</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">海外置產 說明會</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/raywhitehk/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Ray%20White%20Hong%20Kong" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 🔥 【限量席次釋出】現在僅需 1/10 成本，提前鎖定未來資產溢價！ 🔥 還在台灣的高房價與通膨中苦思資金去向嗎？ 放眼全球，瞄準墨爾本市中心即將迎來的「供給斷層」絕版黃金期，現在就是進場的最佳時機！📈 🏆 墨爾本 Southbank 巔峰鉅作｜Melbourne Square 最新一期【AURA】2026 首發精華戶，震撼登場！ 總耗資 28 億澳幣打造的南岸旗艦級獲獎地標，全球首度於台灣完整解析最新、最頂級的第三期作品 —— AURA。這不僅是一處居所，更是為您與下一代佈局全球的戰略起點！ 💎 為什麼 AURA 是高資產族群的首選？</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 2, 2026</span><a href="https://www.facebook.com/ads/library/?id=1648374319686691" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">雄鷹置業 -台灣首選品牌</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">第二家園</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61587422997185/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E9%9B%84%E9%B7%B9%E7%BD%AE%E6%A5%AD%20-%E5%8F%B0%E7%81%A3%E9%A6%96%E9%81%B8%E5%93%81%E7%89%8C" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 活動圓滿成功🥳 請大家盡快報名參訪 ✈️ /留言區索取連結 #雄鷹置業  #海外房地產 #第二家園 拍攝🎬 @tiptop.genius 演出🎤 @amandaman_ice 場地🫰 @greatskyview</div>
+              <div class="ad-meta"><span class="meta">📅 Apr 3, 2026</span><a href="https://www.facebook.com/ads/library/?id=1991708968450322" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Dy小杨带你看房</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">第二家園</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/61568534783682/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=Dy%E5%B0%8F%E6%9D%A8%E5%B8%A6%E4%BD%A0%E7%9C%8B%E6%88%BF" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 📍【💥吉隆坡高回報率公寓💥】樓下左邊右邊都是知名購物商場，走路5分鐘到MRT，真的是懶人天堂！今天小楊帶你走進【時代廣場2號樓 Times Square 2】🥳 📢先講重點！！ ✅【低價】直接入手【吉隆坡市中心永久產權公寓】！ ✅【ROI 租金回酬率 8%！】🥳 ✅本身價格就低於附近的樓盤，買到就原地賺幾百千馬幣！</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 29, 2026</span><a href="https://www.facebook.com/ads/library/?id=1260065326193001" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">北安勤美皮膚科診所/附設整形門診</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">MM2H</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/icharming.dermatology.clinic/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E5%8C%97%E5%AE%89%E5%8B%A4%E7%BE%8E%E7%9A%AE%E8%86%9A%E7%A7%91%E8%A8%BA%E6%89%80/%E9%99%84%E8%A8%AD%E6%95%B4%E5%BD%A2%E9%96%80%E8%A8%BA" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown UP雷射 - 告別月球表面，重拾平滑肌 臉上及身上的疤痕 讓人缺乏自信， UP雷射，針對疤痕、凹洞、痘疤的有效治療，找回自信 UP雷射為:ultrapulse CO2 laser的簡稱，全名為洛明尼斯二氧化碳雷射系統 (衛署醫器輸字第019386號)</div>
+              <div class="ad-meta"><span class="meta">📅 Dec 9, 2024</span><a href="https://www.facebook.com/ads/library/?id=758631613133075" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">緯哲 新/中古機車買賣</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">MM2H</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/weizhe168/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E7%B7%AF%E5%93%B2%20%E6%96%B0/%E4%B8%AD%E5%8F%A4%E6%A9%9F%E8%BB%8A%E8%B2%B7%E8%B3%A3" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown ✨✨Big News for Foreigners in Taiwan!🇹🇼 🇵🇭🇮🇩🇻🇳🇹🇭🇮🇳🇺🇸Foreigners are welcome to come to our store to buy motorcycles. Can Installment payment 👍🏻👍🏻👍🏻 You can buy a motorcycle if you have arc+health card. Foreign students can also. Foreign students come to buy have discounts 💯 We offer cash</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 6, 2026</span><a href="https://www.facebook.com/ads/library/?id=26070934959229809" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">EEC Mall Indonesia</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">MM2H</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/eecmallindo/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=EEC%20Mall%20Indonesia" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown Dapet kiriman 𝐭𝐞𝐬𝐭𝐢𝐦𝐨𝐧𝐢 lagi dari 𝐩𝐞𝐥𝐚𝐧𝐠𝐠𝐚𝐧 𝐬𝐞𝐭𝐢𝐚 𝐄𝐄𝐂 𝐌𝐚𝐥𝐥 𝐈𝐧𝐝𝐨𝐧𝐞𝐬𝐢𝐚  yang paketnya udah sampe🥰😝. Yuk yang paketnya udah sampe juga boleh dong 𝐤𝐢𝐫𝐢𝐦-𝐤𝐢𝐫𝐢𝐦 𝐟𝐨𝐭𝐨𝐧𝐲𝐚  hehehehe🥰 #eecmallindonesia #fypviral #pmitaiwan #taiwan #testimoni Shopping Send message</div>
+              <div class="ad-meta"><span class="meta">📅 Aug 5, 2025</span><a href="https://www.facebook.com/ads/library/?id=734245102555982" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">泓宇角鋼-免螺絲角鋼零售/批發、專業倉儲貨架規劃設計</div>
+              <div class="card-sub"><span class="badge">1 則廣告</span> <span class="muted">MM2H</span></div>
+            </div>
+            <div class="card-actions"><a href="https://www.facebook.com/hungyusteel/" target="_blank" class="btn btn-blue">查看粉專</a><a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=TW&q=%E6%B3%93%E5%AE%87%E8%A7%92%E9%8B%BC-%E5%85%8D%E8%9E%BA%E7%B5%B2%E8%A7%92%E9%8B%BC%E9%9B%B6%E5%94%AE/%E6%89%B9%E7%99%BC%E3%80%81%E5%B0%88%E6%A5%AD%E5%80%89%E5%84%B2%E8%B2%A8%E6%9E%B6%E8%A6%8F%E5%8A%83%E8%A8%AD%E8%A8%88" target="_blank" class="btn btn-green">Ad Library</a></div>
+          </div>
+          <div class="card-body">
+            <div class="ad-row">
+              <div class="ad-body">Open Dropdown 與其買對👍也不要買貴 打造最「合適」專屬自己的空間規劃 中部地區免螺絲角鋼工廠直營經銷商 泓宇角鋼將根據您的需求提供最合適的產品😊 中鋼材料：台灣生產、品質穩定、公差小</div>
+              <div class="ad-meta"><span class="meta">📅 Mar 18, 2026</span><a href="https://www.facebook.com/ads/library/?id=1219556346604161" target="_blank" class="chip chip-blue">🔗 查看廣告</a></div>
+            </div></div>
+        </div>
+    </div></div>
+  <div id="tab-yt" class="tab-content">
+    <div class="section">
+      <h2 class="sec-title">📊 關鍵字搜尋結果</h2>
+      <table class="stats-tbl">
+        <tr>
+          <td class="q-name">吉隆坡房產</td>
+          <td><div class="bar-wrap"><div class="bar bar-red" style="width:100%"></div><span class="bar-num">15</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">馬來西亞第二家園</td>
+          <td><div class="bar-wrap"><div class="bar bar-red" style="width:100%"></div><span class="bar-num">15</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">新山建案</td>
+          <td><div class="bar-wrap"><div class="bar bar-red" style="width:2%"></div><span class="bar-num">0</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">KLCC建案</td>
+          <td><div class="bar-wrap"><div class="bar bar-red" style="width:2%"></div><span class="bar-num">0</span></div></td>
+        </tr>
+        <tr>
+          <td class="q-name">KL新建案</td>
+          <td><div class="bar-wrap"><div class="bar bar-red" style="width:2%"></div><span class="bar-num">0</span></div></td>
+        </tr></table>
+    </div>
+    <div class="section">
+      <h2 class="sec-title">🎬 本週新影片（29 部）</h2>
+      <div class="yt-grid">
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=IkkbItrLyyU" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/IkkbItrLyyU/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:33</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=IkkbItrLyyU" target="_blank" class="yt-title">🇲🇾选房 海外买家都这么理性 那么... #吉隆坡房产 #吉隆坡 #大马看房约喵喵 #楼花投资 #分享 #日本 #台湾 #马来西亚房产 #第二家园</a>
+            <a href="https://www.youtube.com/channel/UC1pRL0-t0DwXnhTobs0jGBA" target="_blank" class="yt-channel">大马看房约喵喵</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 196</span>
+              <span>👍 3</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=iAQJXwmuFHg" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/iAQJXwmuFHg/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:42</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=iAQJXwmuFHg" target="_blank" class="yt-title">吉隆坡雅居樂 · 天匯第二家園最低門檻！送精裝修家具！#mygo國際地產 #陳祐薇 #小薇愛買房 #馬來西亞房地產 #馬來西亞吉隆坡房地產 #新山買房 #送車位 #海外置產 #收租 #捷運宅</a>
+            <a href="https://www.youtube.com/channel/UC4RIPunyWWb7xSv7CO2N5uw" target="_blank" class="yt-channel">MyGo國際地產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 —</span>
+              <span>👍 —</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=8xJfiY5cejw" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/8xJfiY5cejw/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:36</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=8xJfiY5cejw" target="_blank" class="yt-title">什么契机让你选择住在 PJ</a>
+            <a href="https://www.youtube.com/channel/UCIs-kMT58JtdreQlE-WCa0Q" target="_blank" class="yt-channel">Lewis Chong</a>
+            <div class="yt-desc">📱 联系 Lewis +6011-2379 5998 (Whatsapp)
+🔗 Link: https://chatmamba.com/lewischongytb
+✉️ WeChat id : lewis0416
+
+Why does Petaling Jaya (PJ) remain the soul of the Klang Valley despite the rise of new town</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 49</span>
+              <span>👍 —</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=sffotbkz87w" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/sffotbkz87w/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:03</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=sffotbkz87w" target="_blank" class="yt-title">我剛到KL第3天，就被困在一個陌生城市。 #馬來西亞小嬡 #馬來西亞 #馬來西亞生活 #馬來西亞第二家園 #馬來西亞房地產 #吉隆坡生活 #真實故事 #人生經歷 #普通人的生活是什么样子的</a>
+            <a href="https://www.youtube.com/channel/UClEX14fnwOS4Tp76wLDohVQ" target="_blank" class="yt-channel">🇲🇾 馬來西亞小嫒-帶你安家在大馬</a>
+            <div class="yt-desc">很多人只看到我現在在吉隆坡做這一行，
+但其實很少人知道，我剛來KL的時候經歷了什麼。
+
+我來到第3天，城市直接封了。
+
+沒有朋友，沒有熟人，
+連鄰居是誰都不知道。
+
+最現實的是——
+沒有收入，但每天都在花錢。
+
+房租、吃飯，每一天都在算。
+
+那段時間，我沒有選擇停下來。
+反而逼自己學習、找方法、線上見客戶。
+
+現在回頭看，這段經歷不算最難。
+但它讓我明白一件事：
+
+👉環境可以限制你，但不能決定你。</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 1,179</span>
+              <span>👍 22</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=ab8I19RkWpE" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/ab8I19RkWpE/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:00</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=ab8I19RkWpE" target="_blank" class="yt-title">一家人來大馬、最適合看的投資房產🏡｜ #馬來西亞第二家園 #台灣人移居大馬 #馬來西亞房產 #海外買房投資 #大馬投資房產</a>
+            <a href="https://www.youtube.com/channel/UCfZBxsbngohzP8BUTY7gtNg" target="_blank" class="yt-channel">萱萱聊大馬房產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 2</span>
+              <span>👍 —</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=O-Fb9gjawZ8" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/O-Fb9gjawZ8/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:17</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=O-Fb9gjawZ8" target="_blank" class="yt-title">三房可以获得5.6%的回报率  #吉隆坡房产 #大马买房</a>
+            <a href="https://www.youtube.com/channel/UC5vzp5wLFq1wVBzcF5AfueA" target="_blank" class="yt-channel">马来安家找维尼姐</a>
+            <div class="yt-desc">今天带看的这个神仙盘，3房轻松斩获5.6%超高回报率。
+为什么这么抢手？ 不仅拥有绝版“一公里河畔公园”和市中心极其稀缺的大型网球场，楼下大厂精英和名校陪读家庭更是供不应求。
+单位极其有限，懂行的聪明买家早就悄悄入场抢光了！ 
+不想再和别人内卷“丢价”出租？跟着Winnie买这种高净值硬核资产！
+#马来西亚买房 #搞钱思维 #大马学区房 #陪读日常</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 129</span>
+              <span>👍 —</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=6plARNN-pYg" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/6plARNN-pYg/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:28</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=6plARNN-pYg" target="_blank" class="yt-title">Best Budget Hotel in Kuala Lumpur. 13€ pp/pn 🤩🇲🇾 #kualalumpur #malaysia #budgettravel</a>
+            <a href="https://www.youtube.com/channel/UCFFYtN3GFRdU0nSUfduf2nQ" target="_blank" class="yt-channel">Mina &amp; Res Moray</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 1,703</span>
+              <span>👍 32</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=OnEoRbxC1xU" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/OnEoRbxC1xU/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:11</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=OnEoRbxC1xU" target="_blank" class="yt-title">🇲🇾马来西亚4大富人区在哪里呢？ 到底哪里才是适合居住或者投资的地方呢📍🏡 #吉隆坡 #klcc #馬來西亞買房 #吉隆坡房產 #外國人買房 #property #malaysiainvest</a>
+            <a href="https://www.youtube.com/channel/UCaKp4yGAk5Oyq78A04HXUoA" target="_blank" class="yt-channel">CloudangelProperty吉隆坡房产🏠-Angelynn</a>
+            <div class="yt-desc">🇲🇾马来西亚4大富人区在哪里呢？📍</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 339</span>
+              <span>👍 3</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=8L5IvtId6ck" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/8L5IvtId6ck/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">10:41</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=8L5IvtId6ck" target="_blank" class="yt-title">Oxley Tower Kuala Lumpur | 距离KLCC仅250米🔥Freehold永久地契豪华公寓 | Branded Residence KLCC</a>
+            <a href="https://www.youtube.com/channel/UCXrWqlXJLju3tKL8jaZIffA" target="_blank" class="yt-channel">蛋黄带财</a>
+            <div class="yt-desc">点击链接获取最新资料 -- Whatsapp : https://wa.link/iblp82
+微信 ：elainetannnnn 备注：Oxley Tower 
+
+带你了解吉隆坡最核心地段之一的项目 —— Oxley Tower 🇲🇾
+
+项目距离 KLCC仅250米步行距离，拥有极为稀缺的Freehold永久地契，无论是自住还是投资，都具备极高价值。
+
+✨ 项目亮点：
+
+📍 KLCC核心地段（仅</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 12</span>
+              <span>👍 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=l08OQhbz-Wk" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/l08OQhbz-Wk/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:23</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=l08OQhbz-Wk" target="_blank" class="yt-title">二家获批一年内怎么选房不被宰</a>
+            <a href="https://www.youtube.com/channel/UCe0Wwo_ZmGs1sYWATRwxjlA" target="_blank" class="yt-channel">YMG 易马海外</a>
+            <div class="yt-desc">联络讯息 ✨
+微信Wechat     :  YMGTEH
+Whatsapp         :  https://wa.me/c/60142133116
+Telegram          :   https://t.me/+60142133116
+Telegram频道  :   https://t.me/+YTevSdMq0KI2ZDI1
+
+**添加联系后，请留言来意！ 忙完后会立即回复大家！</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 166</span>
+              <span>👍 —</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=DVO6xBaF3XM" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/DVO6xBaF3XM/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:20</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=DVO6xBaF3XM" target="_blank" class="yt-title">“我不想開車，有沒有那種走路就能生活的?”看了幾個地方，最後他停在Times Square 2👇想看資料，留言「TS2」我發你📩 #吉隆坡房產 #馬來西亞買房 #海外投資 #房地產 #阿彬Cruz</a>
+            <a href="https://www.youtube.com/channel/UCXu61amHZL4oh464Z7MxKpw" target="_blank" class="yt-channel">阿彬Cruz在馬來西亞</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 190</span>
+              <span>👍 —</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=tU1Hkurh9xs" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/tU1Hkurh9xs/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:19</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=tU1Hkurh9xs" target="_blank" class="yt-title">🐴230萬的房子，2房，租🐴8,200值嗎？#房產 #買房那些事 #房產知識分享 #資產配置 #吉隆坡房產</a>
+            <a href="https://www.youtube.com/channel/UCXu61amHZL4oh464Z7MxKpw" target="_blank" class="yt-channel">阿彬Cruz在馬來西亞</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-08</span>
+              <span>👁 158</span>
+              <span>👍 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=be8iFea0TxE" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/be8iFea0TxE/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:56</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=be8iFea0TxE" target="_blank" class="yt-title">吉隆坡市中心竟然隐藏这个景观！ #马来西亚 #realestate #马来西亚房产 #property #klcc</a>
+            <a href="https://www.youtube.com/channel/UCGjeFFDOGMoPxGC6-COJX0Q" target="_blank" class="yt-channel">Ally Ang Properties。Ally看楼</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-07</span>
+              <span>👁 1,194</span>
+              <span>👍 —</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=LGZ6muT26Zg" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/LGZ6muT26Zg/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:27</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=LGZ6muT26Zg" target="_blank" class="yt-title">Maple: OUG 成熟华社核心，10 分钟到 Pavilion！</a>
+            <a href="https://www.youtube.com/channel/UCHv8lEaKQwZLzNoPrjDcd_Q" target="_blank" class="yt-channel">Easyy Real Estate </a>
+            <div class="yt-desc">✅ 12 尺超高层高设计，空间感直接拉满
+告别压抑！这里的层高比普通 Condo 高出 2 尺，采光和通风效果无敌好。1378 方尺大户型，住起来就像 Landed 一样宽敞舒服。
+
+✅ 永久产权 + 纯住宅地契，居住成本更低
+在 KL 找 Freehold 不难，找 Residential Title 才难！更低的水电费、更纯粹的居住环境，没有楼下商铺的吵闹，只有高品质的居家安宁。
+
+✅ 双钥匙</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-07</span>
+              <span>👁 78</span>
+              <span>👍 2</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=SVRdjGRnloo" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/SVRdjGRnloo/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:55</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=SVRdjGRnloo" target="_blank" class="yt-title">Mau punya property di Kuala Lumpur Malaysia baik yang ready / indent boleh wa kian 0812212555595</a>
+            <a href="https://www.youtube.com/channel/UC7SXtXWlj7Zub9etz-yfNvQ" target="_blank" class="yt-channel">Kian.Xmarks</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-07</span>
+              <span>👁 1,216</span>
+              <span>👍 14</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=Pgn4iBXRdYM" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/Pgn4iBXRdYM/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:49</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=Pgn4iBXRdYM" target="_blank" class="yt-title">在大馬有選擇權的短租房產⁉️｜ #馬來西亞第二家園 #台灣人移居大馬 #馬來西亞房產 #海外買房投資 #大馬投資房產</a>
+            <a href="https://www.youtube.com/channel/UCfZBxsbngohzP8BUTY7gtNg" target="_blank" class="yt-channel">萱萱聊大馬房產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-07</span>
+              <span>👁 48</span>
+              <span>👍 3</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=OBdAR8AL8Zw" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/OBdAR8AL8Zw/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:56</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=OBdAR8AL8Zw" target="_blank" class="yt-title">超大设施，在城市中享有一片绿化的宁静生活 #吉隆坡房产 #使馆区房 #第二家园 #超便宜超划算</a>
+            <a href="https://www.youtube.com/channel/UCeTdcCPAU_L0-J9hUh8xT0A" target="_blank" class="yt-channel">吉隆坡小彭</a>
+            <div class="yt-desc">完整影片【Embassyview】KL使馆区最值得买的公寓？完整介绍使馆区超大户型 | 平均170平米 | 绿地尽收眼底
+https://youtu.be/iQH7bLykYz8</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-07</span>
+              <span>👁 929</span>
+              <span>👍 5</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=Pdw-beZqw8g" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/Pdw-beZqw8g/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:37</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=Pdw-beZqw8g" target="_blank" class="yt-title">9 Madge | KLCC • Taman U-Thant  #realestate # #property #realestateinvesting #malaysia</a>
+            <a href="https://www.youtube.com/channel/UC84hsmVn1Mu9sdRy_JTsw0g" target="_blank" class="yt-channel">VIGO | The Estate Club</a>
+            <div class="yt-desc">Completed - ready move in 
+Nearby to ISKL International School 
+Foreigners Welcome 
+
+4+1 rooms 3 parking slots | 3160sqft
+Fully Furnished 
+
+VIGO | The Estate Club
+☎️ Contact 014-7251893</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-07</span>
+              <span>👁 2,001</span>
+              <span>👍 21</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=71DAkvbhmPA" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/71DAkvbhmPA/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:48</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=71DAkvbhmPA" target="_blank" class="yt-title">為什麼很多國際投資者、愛上這大馬酒店包出租配套⁉️📈｜ #馬來西亞第二家園 #台灣人移居大馬 #馬來西亞房產 #海外買房投資 #大馬投資房產</a>
+            <a href="https://www.youtube.com/channel/UCfZBxsbngohzP8BUTY7gtNg" target="_blank" class="yt-channel">萱萱聊大馬房產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-06</span>
+              <span>👁 181</span>
+              <span>👍 4</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=sdQYiGK4pwA" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/sdQYiGK4pwA/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:35</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=sdQYiGK4pwA" target="_blank" class="yt-title">大馬雙子星大戶型、房價需要多少錢⁉️｜ #馬來西亞第二家園 #台灣人移居大馬 #馬來西亞房產 #海外買房投資 #大馬投資房產</a>
+            <a href="https://www.youtube.com/channel/UCfZBxsbngohzP8BUTY7gtNg" target="_blank" class="yt-channel">萱萱聊大馬房產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-06</span>
+              <span>👁 23</span>
+              <span>👍 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=PkTbZSYOuZo" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/PkTbZSYOuZo/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:37</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=PkTbZSYOuZo" target="_blank" class="yt-title">为什么很多人来吉隆坡看房，第一感觉都很好？ #小隆在吉隆坡 #第二家园 #海外置产 #移居馬來西亞 #马来西亚</a>
+            <a href="https://www.youtube.com/channel/UCue4sm9bonSJnPzZVea4jpg" target="_blank" class="yt-channel">小隆在吉隆坡</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-05</span>
+              <span>👁 763</span>
+              <span>👍 5</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=3RTWrbcD3m4" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/3RTWrbcD3m4/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">14:23</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=3RTWrbcD3m4" target="_blank" class="yt-title">台灣人也瘋狂 吉隆坡金融中心房產唯一連接地鐵 TRX商場的高端房產 今年八月交屋 Kuala Lumpur Malaysia IRA 愛拉</a>
+            <a href="https://www.youtube.com/channel/UC38f8aapqZytM4GT40gTRBg" target="_blank" class="yt-channel">閒閒就愛拉</a>
+            <div class="yt-desc">辦理第二家園、房產相關有興趣的觀眾
+歡迎填寫表單❤️🌹
+愛拉團隊會與您聯繫 謝謝😊
+
+👉 https://docs.google.com/forms/d/e/1FAIpQLScdJrWRBhTiI7XfNSpiT_P4seM50sidfpqimGg83hbhWrDxBA/viewform?usp=header
+
+#台灣人在馬來西亞 #馬來西亞房地產 #馬來西亞第二家園 #malaysia</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-05</span>
+              <span>👁 5,887</span>
+              <span>👍 344</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=wrW0t0fjt3Q" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/wrW0t0fjt3Q/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:50</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=wrW0t0fjt3Q" target="_blank" class="yt-title">馬來西亞哪些投資房產、容易折舊 難保養⁉️🏠｜ #馬來西亞第二家園 #台灣人移居大馬 #馬來西亞房產 #海外買房投資 #大馬投資房產</a>
+            <a href="https://www.youtube.com/channel/UCfZBxsbngohzP8BUTY7gtNg" target="_blank" class="yt-channel">萱萱聊大馬房產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-05</span>
+              <span>👁 441</span>
+              <span>👍 4</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=suSg5Gvq6UE" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/suSg5Gvq6UE/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">54:20</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=suSg5Gvq6UE" target="_blank" class="yt-title">【第二家園】2026年又發現新的坑。現在申請MM2H新的規定</a>
+            <a href="https://www.youtube.com/channel/UCAvvXU81_6g3yacK2u6YLKg" target="_blank" class="yt-channel">KL Property Talk Show</a>
+            <div class="yt-desc">由2024年第三季度開始推出的新版馬來西亞第二家園計畫MM2H開始到現在，不停的出現新的伎倆來吸引客戶。慢慢的就會變成坑。越來越多的仲介加入第二家園這個行業競爭也越來越激烈。
+
+第二家園網站（中文）：https://www.mymm2hvisa.com
+第二家园网站（英文）：https://www.mm2hvisa.net
+查询合法授权中阶/代理公司： https://motac.gov.my/s</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-05</span>
+              <span>👁 1,134</span>
+              <span>👍 32</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=qZzZN1HweJA" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/qZzZN1HweJA/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">0:42</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=qZzZN1HweJA" target="_blank" class="yt-title">大馬黃金三角的房價有多便宜⁉️🏠｜ #馬來西亞第二家園 #台灣人移居大馬 #馬來西亞房產 #海外買房投資 #大馬投資房產</a>
+            <a href="https://www.youtube.com/channel/UCfZBxsbngohzP8BUTY7gtNg" target="_blank" class="yt-channel">萱萱聊大馬房產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-05</span>
+              <span>👁 941</span>
+              <span>👍 9</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=a0Qn0r3j1Ag" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/a0Qn0r3j1Ag/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:12</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=a0Qn0r3j1Ag" target="_blank" class="yt-title">馬來西亞新山 富力公主灣最新三期全新一房577 呎單位只售港幣100萬起  #大馬房產 #johorbahru #johorproperty  #mm2h</a>
+            <a href="https://www.youtube.com/channel/UCrK0LbdkURcqIqUc-qQOudg" target="_blank" class="yt-channel">Asia Homes (HK) Consultancy</a>
+            <div class="yt-desc">「豪裝 577呎 闊落一房」
+• 只需 100 萬港元起！
+• 永久業權 | 新加坡旁
+• 富力公主灣三期 最新示範單位
+• 馬來西亞最近星加坡的樓盤
+#johorbahru #johorproperty  #mm2h #馬來西亞第二家園 #大馬房產 
+@rfprincesscove8771 
+For more info pls call +85298223127 or email info@as</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-04</span>
+              <span>👁 62</span>
+              <span>👍 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=0N2bihWi00s" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/0N2bihWi00s/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">8:29</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=0N2bihWi00s" target="_blank" class="yt-title">在馬來西亞 買房只是第一步 懂 Condo Rules 才能安心入住 🇲🇾😊</a>
+            <a href="https://www.youtube.com/channel/UCs26XxlOw8TwnK9LAIyssxQ" target="_blank" class="yt-channel">馬來 火姐 Florence</a>
+            <div class="yt-desc">在馬來西亞 🇲🇾，大部分公寓（Condo）都有明確的管理規定（Condo Rules）📄。無論你是裝修單位 🔨 還是搬入新家 🏠，都必須事先向管理處申請 📝，並遵守施工時間 ⏰、電梯使用 🛗、押金制度 💰 等要求。若未提前了解或違規操作 ⚠️，輕則被投訴 📣，重則罰款 💸 甚至被要求停工 ⛔。建議所有業主與租客 👥，在安排裝修或搬屋前 🚚，先清楚了解相關規則 🔍，避免不必要的麻煩 😣，確保整個過程</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-04</span>
+              <span>👁 4,139</span>
+              <span>👍 120</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=ScogieQWntM" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/ScogieQWntM/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">1:07</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=ScogieQWntM" target="_blank" class="yt-title">大馬國際酒店、更適合哪兩種投資買家⁉️🏠｜ #馬來西亞第二家園 #台灣人移居大馬 #馬來西亞房產 #海外買房投資 #大馬投資房產</a>
+            <a href="https://www.youtube.com/channel/UCfZBxsbngohzP8BUTY7gtNg" target="_blank" class="yt-channel">萱萱聊大馬房產</a>
+            <div class="yt-desc"></div>
+            <div class="yt-meta">
+              <span>📅 2026-04-04</span>
+              <span>👁 286</span>
+              <span>👍 4</span>
+            </div>
+          </div>
+        </div>
+        <div class="yt-card">
+          <a href="https://www.youtube.com/watch?v=hWHVLE2fOo0" target="_blank" class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/hWHVLE2fOo0/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-dur">19:27</span>
+          </a>
+          <div class="yt-info">
+            <a href="https://www.youtube.com/watch?v=hWHVLE2fOo0" target="_blank" class="yt-title">千万别去马来西亚! 探访4城后我彻底失望! 移民/房产中介能说点真话吗? 华人被歧视, 投资还赔钱! 资产别放那! 跟澳洲阿联酋不在一个档次!【艾财说特别篇6】</a>
+            <a href="https://www.youtube.com/channel/UCBbpxPZd43zllV0NMzj9nUg" target="_blank" class="yt-channel">艾财说imoneytalk</a>
+            <div class="yt-desc">#马来西亚投资 #MM2H第二家园 #海外资产配置
+✅艾财说社群课程直播即将上线, https://bit.ly/offer-pre-rego
+✅直播公开课《阿联酋避税与房产投资大师课》https://bit.ly/uae-master-class
+
+中东不行了，钱都跑了，赶紧来马来西亚吧! ——最近几周这类视频我刷到不下十条，不是移民中介就是房产中介在讲。还有很多住在马来西亚的YouTuber也</div>
+            <div class="yt-meta">
+              <span>📅 2026-04-04</span>
+              <span>👁 66,023</span>
+              <span>👍 3,450</span>
+            </div>
+          </div>
+        </div></div>
+    </div></div>
+</main>
+
+<footer class="ftr">CCPS 廣告監控系統 · 家慶佳業 · FB 投放地區：台灣 · YT 搜尋範圍：過去 7 天</footer>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
